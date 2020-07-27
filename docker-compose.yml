@@ -1,0 +1,52 @@
+version: "3.7"
+
+services: 
+
+    nginx:
+        image: nginx
+        ports:
+            - "80:80"
+
+    service_1:
+        build: ./Service_1
+        container_name: service_1
+        image: forrow/service_1
+        ports:
+            - "5000:5000"
+        networks:
+            - sfia2_network
+        environment:
+            - SAMPLE=HELLO
+            - GARY=${MYSQL}
+        depends_on:
+            - service_4
+            - service_3
+            - service_2
+
+    service_2:
+        build: ./Service_2
+        container_name: service_2
+        image: forrow/service_2
+        networks:
+            - sfia2_network
+
+    service_3:
+        build: ./Service_3
+        container_name: service_3
+        image: forrow/service_3
+        networks:
+            - sfia2_network
+    
+    service_4:
+        build: ./Service_4
+        container_name: service_4
+        image: forrow/service_4
+        networks:
+            - sfia2_network
+
+networks:
+    sfia2_network:
+        driver: bridge
+        name: sfia2_network
+    another_network:
+        driver: bridge
