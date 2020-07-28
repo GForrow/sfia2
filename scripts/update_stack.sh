@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$(docker stack ls)" == *"lootstack"* ]]; then
+# if [[ "$(docker stack ls)" == *"lootstack"* ]]; then
     echo "Lootstack is running."
 
     echo "Updating service_1."
@@ -14,4 +14,4 @@ if [[ "$(docker stack ls)" == *"lootstack"* ]]; then
 
     echo "Updating service_4."
     docker service update --image forrow/service_4 lootstack_service_4
-fi
+# fi
