@@ -4,28 +4,28 @@
 
 if [[ "$(docker images -q forrow/service_1:latest 2> /dev/null)" == "" ]]; then
     docker build -t forrow/service_1 ./Service_1
-    docker push forrow/service_1:latest
+    docker push forrow/service_1
 else
-    docker pull forrow/service_1:latest
+    docker pull forrow/service_1
 fi
 
 if [[ "$(docker images -q forrow/service_2:latest 2> /dev/null)" == "" ]]; then
     docker build -t forrow/service_2 ./Service_2
-    docker push forrow/service_2:latest
+    docker push forrow/service_2
 else
-    docker pull forrow/service_2:latest
+    docker pull forrow/service_2
 fi
 
 if [[ "$(docker images -q forrow/service_3:latest 2> /dev/null)" == "" ]]; then
     docker build -t forrow/service_3 ./Service_3
-    docker push forrow/service_3:latest
+    docker push forrow/service_3
 else
-    docker pull forrow/service_3:latest
+    docker pull forrow/service_3
 fi
 
 if [[ "$(docker images -q forrow/service_4:latest 2> /dev/null)" == "" ]]; then
     docker build -t forrow/service_4 ./Service_4
-    docker push forrow/service_4:latest
+    docker push forrow/service_4
 else
-    docker pull forrow/service_4:latest
+    docker pull forrow/service_4
 fi
