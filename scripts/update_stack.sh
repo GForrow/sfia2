@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ "$(docker stack ls)" == *"lootstack"* ]]; then
     echo "Lootstack is running."
 
