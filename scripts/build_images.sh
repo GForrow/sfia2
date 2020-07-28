@@ -10,7 +10,7 @@ if [[ "$(docker images -q forrow/service_2:latest 2> /dev/null)" == "" ]]; then
     docker build -t forrow/service_2 ./Service_2
 fi
 
-if [[ "$(docker images -q forrow/service_1:latest 3> /dev/null)" == "" ]]; then
+if [[ "$(docker images -q forrow/service_3:latest 2> /dev/null)" == "" ]]; then
     docker build -t forrow/service_3 ./Service_3
 fi
 
