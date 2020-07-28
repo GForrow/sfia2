@@ -4,11 +4,14 @@ pipeline{
 
     stages {
 
-        stage('Deploy') {
+        stage('Build Images') {
             
             steps {
 
-                sh 'echo Hello'
+                sh 'docker build -t forrow/service_1 ./Service_1'
+                sh 'docker build -t forrow/service_2 ./Service_2'
+                sh 'docker build -t forrow/service_3 ./Service_3'
+                sh 'docker build -t forrow/service_4 ./Service_4'
 
             }
             
