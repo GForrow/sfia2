@@ -47,3 +47,8 @@ def home():
     db.session.add(loot_data)
     db.session.commit()
     return render_template('index.html', sentence = sentence, title = 'Home')
+
+@app.route('/create')
+def create():
+    db.create_all()
+    return "Added table and populated with dummy records"
