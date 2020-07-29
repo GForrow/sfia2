@@ -44,6 +44,6 @@ def home():
     loot_data = loot_table(
         loot_result=sentence
     )
-    # db.session.add(loot_data)
-    # db.session.commit()
+    db.session.add(loot_data)
+    db.session.commit()
     return render_template('index.html', sentence = sentence, title = 'Home')
