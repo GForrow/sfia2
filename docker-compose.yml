@@ -15,6 +15,7 @@ services:
             - SQL_PORT=${MYSQL_PORT}
             - SQL_USER=${MYSQL_USER}
             - SQL_DBNAME=${MYSQL_DBNAME}
+            - LOOT_SECRETKEY=${LOOT_SECRETKEY}
         depends_on:
             - service_4
             - service_3
