@@ -10,8 +10,11 @@ services:
         networks:
             - sfia2_network
         environment:
-            - SAMPLE=HELLO
-            - GARY=${MYSQL}
+            - SQL_HOST=${MYSQL_HOST}
+            - SQL_PASS=${MYSQL_PASS}
+            - SQL_PORT=${MYSQL_PORT}
+            - SQL_USER=${MYSQL_USER}
+            - SQL_DBNAME=${MYSQL_DBNAME}
         depends_on:
             - service_4
             - service_3
