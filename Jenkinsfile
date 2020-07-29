@@ -4,12 +4,12 @@ pipeline{
 
     stages {
 
-        stage('Pull Images') {
+        stage('Build and Push') {
             
             steps {
 
                 sh 'chmod +x ./scripts/*.sh'
-                sh './scripts/pull_images.sh'
+                sh './scripts/build_images.sh'
             }
             
         }
