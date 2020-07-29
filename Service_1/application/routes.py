@@ -26,7 +26,7 @@ db = SQLAlchemy(app)
 
 class loot_table(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    loot_result = db.Column(db.String, nullable=False)
+    loot_result = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
         return ''.join(
@@ -44,7 +44,7 @@ def home():
     loot_data = loot_table(
         loot_result=sentence
     )
-    print (loot_data)
+    print(loot_data)
     db.session.add(loot_data)
     db.session.commit()
     return render_template('index.html', sentence = sentence, title = 'Home')
