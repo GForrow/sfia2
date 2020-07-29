@@ -41,9 +41,9 @@ def home():
     response = requests.get('http://service_4:5003/randomword')
     print(response)
     sentence = response.text
-    loot_data = loot_table(
-        loot_result=sentence
-    )
-    db.session.add(loot_data)
-    db.session.commit()
+    # loot_data = loot_table(
+    #     loot_result=sentence
+    # )
+    # db.session.add(loot_data)
+    # db.session.commit()
     return render_template('index.html', sentence = sentence, title = 'Home')
