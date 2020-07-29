@@ -14,4 +14,7 @@
 
     echo "Updating service_4."
     docker service update --image forrow/service_4:latest lootstack_service_4
+
+    echo "Clearing old images"
+    docker rmi $(docker images -f "dangling=true" -q) -f
 # fi
