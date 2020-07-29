@@ -24,7 +24,7 @@ app.config['MYSQL_DB'] = os.getenv('MYSQL_DBNAME')
 
 db = SQLAlchemy(app)
 
-class Loot(db.Model):
+class loot_table(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     loot_result = db.Column(db.String, nullable=False)
 
