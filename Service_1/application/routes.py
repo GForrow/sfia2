@@ -5,18 +5,22 @@ import random
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-app.config['SECRET_KEY'] = os.get('LOOT_SECRETKEY')
+app.config['SECRET_KEY'] = os.getenv('LOOT_SECRETKEY')
 app.config['SQLACLHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + \
-                                        os.get('SQL_USER') + \
-                                        ':' + \
-                                        os.get('SQL_PASS') + \
-                                        '@' + \
-                                        os.get('SQL_HOST') + \
-                                        ':' + \
-                                        os.get('SQL_PORT') + \
-                                        '/' + \
-                                        os.get('SQL_DBNAME')
+app.config['MYSQL_HOST'] = os.getenv('SQL_HOST')
+app.config['MYSQL_USER'] = os.getenv('SQL_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('SQL_PASS')
+app.config['MYSQL_DB'] = os.getenv('SQL_DBNAME')
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + \
+#                                         os.getenv('SQL_USER') + \
+#                                         ':' + \
+#                                         os.getenv('SQL_PASS') + \
+#                                         '@' + \
+#                                         os.getenv('SQL_HOST') + \
+#                                         ':' + \
+#                                         os.getenv('SQL_PORT') + \
+#                                         '/' + \
+#                                         os.getenv('SQL_DBNAME')
 
 db = SQLAlchemy(app)
 
