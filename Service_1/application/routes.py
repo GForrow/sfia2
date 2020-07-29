@@ -45,8 +45,8 @@ def home():
         loot_result=sentence
     )
     print(loot_data)
-    db.session.add(loot_data)
-    db.session.commit()
+    # db.session.add(loot_data)
+    # db.session.commit()
     return render_template('index.html', sentence = sentence, title = 'Home')
 
 @app.route('/create')
