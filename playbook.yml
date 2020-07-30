@@ -1,13 +1,92 @@
 ---
-- hosts: 127.0.0.1
-  connection: local
+# - name: NGINX
+#   hosts: swarm-worker
+#   become: true
+#   tasks:
+#   - name: Install NGINX
+#     apt:
+#       name: nginx
+#       state: latest
+#   - name: Start NGINX service
+#     service:
+#       name: nginx
+#       state: started
+
+- name: Install Docker CE
+  hosts: swarm-worker
   become: true
-  tasks:
-  - name: Install NGINX
-    apt:
-      name: nginx
-      state: latest
-  - name: Start NGINX service
-    service:
-      name: nginx
-      state: started
+  roles:
+    - docker-installation
+
+
+# - name: Install Docker
+#   hosts: docker-test
+#   vars:
+#     DOCKER_COMPOSE_VERSION: "1.25.1"
+#     DOCKER_PACKAGES:
+#       - apt-transport-https
+#       - ca-certificates
+#       - curl
+#       - gnupg-agent
+#       - software-properties-common
+#     USER: "Forrow"
+#   become: true
+
+#   tasks:
+#   - name: update apt
+#     apt:
+#       update_cache: "yes"
+#       force_apt_get: "yes"
+
+#   - name: Install docker dependencies. 
+#     apt:
+#       name: "{{ DOCKER_PACKAGES }}"
+#       state: present
+#       force_apt_get: "yes"
+
+#   - name: Add Docker GPG apt key
+#     apt_key:
+#       url: https://download.docker.com/linux/ubuntu/gpg
+#       state: present
+
+#   - name: Save Current Ubuntu Release verion into a variable
+#     shell: lsb_release -cs
+#     register: ubuntu_version
+
+#   - name: Add Docker Repository
+#     apt_repository:
+#       repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_version.stdout }} stable"
+#       state: present
+
+#   - name: Update apt packages
+#     apt:
+#       update_cache: "yes"
+#       force_apt_get: "yes"
+
+#   - name: Install Docker
+#     apt:
+#       name: "docker-ce"
+#       state: present
+#       force_apt_get: "yes"
+
+#   - name: Create docker group
+#     group:
+#       name: "docker"
+#       state: present
+  
+#   - name: Adding user {{ USER }} to docker group
+#     user:
+#       name: "{{ USER }}"
+#       groups: "docker"
+#       append: "yes"
+
+#   - name: Install Docker Compose 
+#     get_url:
+#       url: https://github.com/docker/compose/releases/download/{{ DOCKER_COMPOSE_VERSION }}/docker-compose-Linux-x86_64
+#       dest: "/usr/local/bin/docker-compose"
+#       mode: 0755
+
+#   - name: Reboot server to apply changes
+#     shell: "sleep 1 && reboot"
+#     async: 1
+#     poll: 0

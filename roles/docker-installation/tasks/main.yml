@@ -1,0 +1,39 @@
+- name: Install docker dependencies 1
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags: docker
+
+- name: get docker GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+    tags: docker
+
+- name: add docker packages to local repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionice stable
+    state: present
+ tags: docker
+
+- name: Install docker
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: yes
+  tags: docker
+
+- name: start docker
+  service:
+    name: docker
+    state: started
+
+- name: add user to docker group
+  shell: usermod -aG docker forrow
+  tags: docker
