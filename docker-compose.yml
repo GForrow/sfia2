@@ -10,12 +10,12 @@ services:
         networks:
             - sfia2_network
         environment:
-            - MYSQL_HOST = ${MYSQL_HOST}
-            - MYSQL_PASS = ${MYSQL_PASS}
-            - MYSQL_PORT = ${MYSQL_PORT}
-            - MYSQL_USER = ${MYSQL_USER}
-            - MYSQL_DBNAME = ${MYSQL_DBNAME}
-            - LOOT_SECRETKEY = ${LOOT_SECRETKEY}
+            - MYSQL_HOST=${MYSQL_HOST}
+            - MYSQL_PASS=${MYSQL_PASS}
+            - MYSQL_PORT=${MYSQL_PORT}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_DBNAME=${MYSQL_DBNAME}
+            - LOOT_SECRETKEY=${LOOT_SECRETKEY}
         depends_on:
             - service_4
             - service_3
