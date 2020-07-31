@@ -17,6 +17,7 @@ pipeline{
         stage('Build Stack') {
             
             steps {
+                sh 'source ~/.bashenv'
                 sh './scripts/build_stack.sh'
             }
             

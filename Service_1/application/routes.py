@@ -33,7 +33,7 @@ class loot_table(db.Model):
         return "".join(
             [
                 'Loot: ' + self.loot_result + '\n'
-                'ID: ' + self.id
+                'ID: ' + str(self.id)
             ]
         )
 
