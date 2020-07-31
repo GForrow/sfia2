@@ -30,7 +30,7 @@ class loot_table(db.Model):
     loot_result = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
-        return ''.join(
+        return "".join(
             [
                 'Loot: ' + self.loot_result + '\n'
                 'ID: ' + str(self.id)
