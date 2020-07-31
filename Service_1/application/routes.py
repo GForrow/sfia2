@@ -4,23 +4,24 @@ import requests
 import random
 from flask_sqlalchemy import SQLAlchemy
 import os
+from os import environ
 
-app.config['SECRET_KEY'] = os.getenv('LOOT_SECRETKEY')
+app.config['SECRET_KEY'] = environ.get('LOOT_SECRETKEY')
 app.config['SQLACLHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MYSQL_HOST'] = os.getenv('SQL_HOST')
-app.config['MYSQL_USER'] = os.getenv('SQL_USER')
-app.config['MYSQL_PASSWORD'] = os.getenv('SQL_PASS')
-app.config['MYSQL_DB'] = os.getenv('SQL_DBNAME')
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + \
-#                                         os.getenv('SQL_USER') + \
-#                                         ':' + \
-#                                         os.getenv('SQL_PASS') + \
-#                                         '@' + \
-#                                         os.getenv('SQL_HOST') + \
-#                                         ':' + \
-#                                         os.getenv('SQL_PORT') + \
-#                                         '/' + \
-#                                         os.getenv('SQL_DBNAME')
+# app.config['MYSQL_HOST'] = os.getenv('SQL_HOST')
+# app.config['MYSQL_USER'] = os.getenv('SQL_USER')
+# app.config['MYSQL_PASSWORD'] = os.getenv('SQL_PASS')
+# app.config['MYSQL_DB'] = os.getenv('SQL_DBNAME')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + \
+                                        environ.get('MYSQL_USER') + \
+                                        ':' + \
+                                        environ.get('MYSQL_PASS') + \
+                                        '@' + \
+                                        environ.get('MYSQL_HOST') + \
+                                        ':' + \
+                                        environ.get('MYSQL_PORT') + \
+                                        '/' + \
+                                        environ.get('MYSQL_DBNAME')
 
 db = SQLAlchemy(app)
 
