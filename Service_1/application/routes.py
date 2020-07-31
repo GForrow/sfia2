@@ -48,5 +48,5 @@ def home():
     all_loot = loot_table.query.all()
     db.session.add(loot_data)
     db.session.commit()
-    return render_template('index.html', item = item, all_loot = all_loot  title = 'Home')
+    return render_template('index.html', item = item, all_loot = all_loot, title = 'Home')
 
