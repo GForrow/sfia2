@@ -41,16 +41,16 @@ class loot_table(db.Model):
 def home():
     response = requests.get('http://service_4:5003/randomword')
     print(response)
-    sentence = response.text
+    item = response.text
     loot_data = loot_table(
-        loot_result=sentence
+        loot_result=item
     )
     print(loot_data)
     db.session.add(loot_data)
     db.session.commit()
-    return render_template('index.html', sentence = sentence, title = 'Home')
+    return render_template('index.html', item = item, title = 'Home')
 
-@app.route('/create')
-def create():
-    db.create_all()
-    return "Added table and populated with dummy records"
+# @app.route('/create')
+# def create():
+#     db.create_all()
+#     return "Added table and populated with dummy records"
