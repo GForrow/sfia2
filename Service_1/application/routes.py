@@ -45,12 +45,8 @@ def home():
     loot_data = loot_table(
         loot_result=item
     )
-    # print(loot_data)
+    all_loot = loot_table.query.all()
     db.session.add(loot_data)
     db.session.commit()
-    return render_template('index.html', item = item, title = 'Home')
+    return render_template('index.html', item = item, all_loot = all_loot  title = 'Home')
 
-# @app.route('/create')
-# def create():
-#     db.create_all()
-#     return "Added table and populated with dummy records"

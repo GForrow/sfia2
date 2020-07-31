@@ -17,5 +17,22 @@
             <button onclick="window.location.reload();">
                 Open Another Lootbox
             </button>
+
+            <div class="content">
+                <table class = "table">
+                    <tr>
+                        <th>Loot</th>&nbsp;
+                    </tr>
+
+                    {% for loot in all_loot %}
+                        <tr class = "tableText"> 
+                            <td><p>
+                                {{ loot.loot_result }}
+                            </p></td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
         </body>
     </html>    
