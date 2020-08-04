@@ -45,7 +45,7 @@ def home():
     loot_data = loot_table(
         loot_result=item
     )
-    all_loot = loot_table.query.filter().order_by('id desc')
+    all_loot = loot_table.query.order_by(loot_table.id.desc())
     db.session.add(loot_data)
     db.session.commit()
     return render_template('index.html', item = item, all_loot = all_loot, title = 'Home')
