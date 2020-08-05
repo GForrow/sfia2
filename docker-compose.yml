@@ -2,23 +2,6 @@ version: "3.7"
 
 services: 
 
-    nginx:
-        build:
-            context: ./NGINX
-            dockerfile: Dockerfile
-        image: forrow/NGINX
-        ports:
-            - "80:80"
-        networks:
-            - sfia2_network
-        depends_on:
-            - service_4
-            - service_3
-            - service_2
-            - service_1
-        deploy:
-            replicas: 2
-
     service_1:
         build: ./Service_1
         image: forrow/service_1
@@ -64,6 +47,23 @@ services:
         deploy:
             replicas: 2
         
+    nginx:
+        build:
+            context: ./NGINX
+            dockerfile: Dockerfile
+        image: forrow/NGINX
+        ports:
+            - "80:80"
+        networks:
+            - sfia2_network
+        depends_on:
+            - service_4
+            - service_3
+            - service_2
+            - service_1
+        deploy:
+            replicas: 2
+
 networks:
     sfia2_network:
         driver: overlay
