@@ -14,4 +14,7 @@ docker push forrow/service_3
 
 docker build --no-cache -t forrow/service_4 ./Service_4
 docker push forrow/service_4
+
+docker build --no-cache -t forrow/nginx ./NGINX
+docker push forrow/nginx
 echo "=================images built and pushed================="
