@@ -1,10 +1,12 @@
 FROM nginx:latest
 
 WORKDIR /etc/nginx/
+
 RUN apt update -y
-RUN apt install openssl -y
+
 RUN rm ./conf.d/default.conf
-RUN cp /home/Forrow/docker/sfia2_project/NGINX/reverse_proxy.conf ../sites-available/
-RUN ln -s /etc/nginx/sites-available/reverse_proxy.conf sites-enabled/
+COPY . conf.d/
+
 # RUN ln -s /etc/nginx/sites-available/reverse_proxy.conf sites-enabled/
+
 RUN /etc/init.d/nginx reload
