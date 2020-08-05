@@ -1,16 +1,16 @@
 ---
-- name: NGINX
-  hosts: swarm-worker
-  become: true
-  tasks:
-  - name: Install NGINX
-    apt:
-      name: nginx
-      state: latest
-  - name: Start NGINX service
-    service:
-      name: nginx
-      state: started
+# - name: NGINX
+#   hosts: swarm-worker
+#   become: true
+#   tasks:
+#   - name: Install NGINX
+#     apt:
+#       name: nginx
+#       state: latest
+#   - name: Start NGINX service
+#     service:
+#       name: nginx
+#       state: started
 
 - name: Install Docker CE on worker
   hosts: swarm-worker
