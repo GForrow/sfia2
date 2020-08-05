@@ -39,7 +39,7 @@ class loot_table(db.Model):
 
 @app.route('/', methods=['GET'])
 def home():
-    response = requests.get('http://service_4:5003/randomword')
+    response = requests.get('http://Service_4:5003/randomword')
     print(response)
     item = response.text
     loot_data = loot_table(
