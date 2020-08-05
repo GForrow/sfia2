@@ -51,7 +51,7 @@ services:
         build:
             context: ./NGINX
             dockerfile: Dockerfile
-        image: forrow/NGINXcont
+        image: NGINX:latest
         ports:
             - "80:80"
         networks:
