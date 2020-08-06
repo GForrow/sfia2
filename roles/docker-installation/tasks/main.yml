@@ -6,6 +6,13 @@
     update_cache: yes
   tags: docker
 
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags: docker
+
 - name: get docker GPG key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg

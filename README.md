@@ -20,36 +20,46 @@
 <br>
 
 ## The Brief
-The brief set out for this particular project was to 'Create a CRUD application with utilisation of supporting tools, 
-methodologies and technologies that encapsulate all core modules covered during training'. <br>
-<br>
-This would involve creating an application with the functionality to <u><b>C</b></u>reate, <u><b>R</b></u>ead, 
-<u><b>U</b></u>pdate, and <u><b>D</b></u>elete records in a database. We were to achieve this using multiple technologies
-that were covered during out training, which will be looked at in more detail further in this readme.
+The brief set out for the DevOps Core Practical Project was to create a simple python/flask application that was deployed to a virtual environment while making use of containerisation. The project must also make use of a VCS, and deployed to a cloud platform by a CI server. 
 
+<br>
 <br>
 
 ### Minimum Requirements:
 * Project management and tracking via Trello or equivalent Kanban board tech. 
-* User stories and use cases needed to complete the project.
-* A relational database use for persistent data storage, with at least 2 tables.
 * Clear documentation.
-* A functional CRUD application created in Python, following best practices and design principles, which meets requirements 
-set out on project management tool.
-* A functioning front-end website and integrated API's, using Flask.
-* Code fully integrated into a Version Control System using Feature-Branch model, subsequently built through a
-CI server and deployed to a cloud-based virtual machine.
+* User stories and use cases needed to complete the project.
+* The project code is to be fully integrated into a Version Control System using Feature-Branch model, subsequently making use of webhooks through a
+CI server and deployed to cloud-based virtual machines.
+* The project is to follow a Service Oriented architecture.
+* The project is to be deployed using containterisation and use an orchestration tool.
+* The project is to make use of a reverse proxy.
+* The project must make use of an Ansible Playbook to provision the environment the application is to run on.
 
 <br>
 
-## Functionality
+## App Overview
 
-To satisfy the brief, my aim was to design a Plant Diary that would allow users to keep a record of thier plants by Scientific name, 
-a nickname given by the user, details of the particular plant, and any additional notes for each plant.
-The goal of this was to be able to provide an easy way to track the care and development of an indoor garden for anyone
-who has found their collection has grown beyond easy management. 
+I created a lootbox generator app. The application would generate a random piece of equipment, and a random quality for the equipment. An example being "Common Boots" or "Epic Gloves."
 
 <br>
+
+<br>
+
+ * Service 1 send a GET request to Service 4.
+ * Service 4 sends a GET request to Services 2 and 3.
+ * Service 2 receives the GET request and generates
+ * Service 3 receives the GET request and generates
+ * Service 4 receives responses from Services 2 and 3, and concatenates them into a single result. 
+ * Service 1 receives the result from Service 4 to display it on the page and commit it to the database. 
+
+<p align="center">
+  <img src="https://i.imgur.com/vA0TGdI.png">
+</p>
+
+<br>
+
+## Trello Board
 
 The user stories I set to meet the above brief were: 
  * As a user I must be able to add a plant to my colleciton
@@ -68,15 +78,13 @@ The user stories I set to meet the above brief were:
 
 <br>
 
-## Data
+## Database
 
-The final outline for the tables in the database, and the relationship between them can be see in the entity relationship diagram below.
+The database in use for the application uses a very simple table, as seen below. This was used to hold the result of previously opened loot boxes.
 
 <p align="center">
-  <img src="https://i.imgur.com/mRTucar.png">
+  <img src="https://i.imgur.com/isvn4OW.png">
 </p>
-
-This diagram specifies the single to many relationship between a user and their plants, where a plant must always belong to a user with the user_id field.
 
 <br>
 
@@ -88,12 +96,14 @@ To keep in line with the brief I made us of the following technologies that were
 * Google Cloud Platform - Cloud hosting
 * mySQL - Database technology implemented via GCP
 * Linux - Server OS used for hosting web app in GCP
+* Docker - Used for containerisation of application. Making use of Docker Compose and Docker Swarm.
 * Python - Application Back-End
 * HTML - Application Front-End
 * Flask - As applications Web Framework
 * Git - Version Control also making use of GitHub
 * Jenkins - CI Server
-* Systemsd - Runs application as a service on Linux VM
+* Ansible - Used as the configuration management, making use of ansible playbooks for deployment configuration. 
+* NGINX - Used as web server utilising reverse proxy to access site without specifying ports.
 
 <br>
 
