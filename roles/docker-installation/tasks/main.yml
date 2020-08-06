@@ -33,3 +33,7 @@
 - name: add user to docker group
   shell: usermod -aG docker Forrow
   tags: docker
+
+- name: add user to docker group
+  shell: usermod -aG docker jenkins
+  tags: docker

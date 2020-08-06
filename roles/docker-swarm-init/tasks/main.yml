@@ -37,3 +37,7 @@
 
 - name: Add worker to manager node
   shell: echo {{ hostvars['token']['value'] }}
+
+- name: add user to docker group
+  shell: usermod -aG docker jenkins
+  tags: docker
