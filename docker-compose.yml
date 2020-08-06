@@ -5,8 +5,6 @@ services:
     service_1:
         build: ./Service_1
         image: forrow/service_1
-        # ports:
-        #     - "5000:5000"
         networks:
             - sfia2_network
         environment:
