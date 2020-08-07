@@ -21,8 +21,6 @@
 
 ## The Brief
 The brief set out for the DevOps Core Practical Project was to create a simple python/flask application that was deployed to a virtual environment while making use of containerisation. The project must also make use of a VCS, and deployed to a cloud platform by a CI server. 
-
-<br>
 <br>
 
 ### Minimum Requirements:
