@@ -1,0 +1,46 @@
+---
+- name: Install docker dependencies 1
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
+    state: latest
+    update_cache: yes
+  tags: docker
+
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags: docker
+
+- name: get docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags: docker
+
+- name: add repo for docker
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename|lower }} stable
+    state: present
+  tags: docker
+
+- name: Install docker
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: yes
+  tags: docker
+
+- name: start docker
+  service:
+    name: docker
+    state: started
+
+- name: add user to docker group
+  shell: usermod -aG docker Forrow
+  tags: docker
+
+- name: add user to docker group
+  shell: usermod -aG docker jenkins
+  tags: docker
