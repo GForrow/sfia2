@@ -5,10 +5,10 @@
 
 ## ReadMe Content
 * The Brief
-* App Functionality
-* Technologies Used
-* Project Tracking
+* App Overview
+* Trello Board
 * Data
+* Technologies Used
 * CI Pipeline
 * Front-End Design
 * Risk Assessment
@@ -42,14 +42,10 @@ CI server and deployed to cloud-based virtual machines.
 
 I created a lootbox generator app. The application would generate a random piece of equipment, and a random quality for the equipment. An example being "Common Boots" or "Epic Gloves."
 
-<br>
-
-<br>
-
  * Service 1 send a GET request to Service 4.
  * Service 4 sends a GET request to Services 2 and 3.
- * Service 2 receives the GET request and generates
- * Service 3 receives the GET request and generates
+ * Service 2 receives the GET request and generates the item quality.
+ * Service 3 receives the GET request and generates the item type. (Gloves, Boots, Helm, etc)
  * Service 4 receives responses from Services 2 and 3, and concatenates them into a single result. 
  * Service 1 receives the result from Service 4 to display it on the page and commit it to the database. 
 
@@ -61,19 +57,10 @@ I created a lootbox generator app. The application would generate a random piece
 
 ## Trello Board
 
-The user stories I set to meet the above brief were: 
- * As a user I must be able to add a plant to my colleciton
- * As a user I must be able to add details of my plants to differentiate between individuals.
- * As a user I must be able to add notes to individual plants to track particular requirements individuals.
- * As a user I must be able to edit a plant's description.
- * As a user I must be able to edit a plant's name. 
- * As a user I must be able to edit a plant's notes.
- 
- See image below for full list of user stories created for the development of this application, as well as the design 
- flow implemented through the development.
+To keep track of my project and the tasks required for its completion I made us of Trello project management. This was to track the tasks of each sprint and understand the minimum requirements for the MVP. This was broken down to a backlog of tasks which were split into seperate sprints, and user stories to understand the Minimum Viable Product. 
  
 <p align="center">
-  <img src="https://i.imgur.com/DqNqSFl.png">
+  <img src="https://i.imgur.com/HDrJGm6.png">
 </p>
 
 <br>
@@ -109,83 +96,63 @@ To keep in line with the brief I made us of the following technologies that were
 
 ## CI Pipeline
 <p align="center">
-  <img src="https://i.imgur.com/X9uqvFX.png">
+  <img src="https://i.imgur.com/kdnrmjG.jpg">
 </p>
 The image above details the CI Pipeline implemented for this project.
 <br>
 
-* Source Code - Written and tested locally while being commited to preestablished GitHub Repo
-* Project Tracking - We then look to Trello to confirm our previous job was complete, and look to take on the next.
-* Version Control System - Git is used to branch from the functioning app repository when developing each job from Trello, before being merged back into the main branch.
-* CI Server - When a new commit has been made, Jenkins will run a job to replace the old version with the new from GitHub, and rerun the app service.
-
+* Source Code - Written and tested locally while being commited to preestablished GitHub Repo making use of the feature branch model. 
+* Project Tracking - We then look to Trello to confirm our previous job from project backlog was complete, and look to take on the next.
+* Version Control System - Git is used to branch from the functioning app repository when developing each job from Trello, before being merged back into the main branch. (See screenshot below)
+* CI Server - When a new commit has been made, Jenkins will run a job to replace the old version with the new from GitHub, and rerun the Docker Compose and Ansible Playbook. This would also cause new docker images to be built and pushed to Docker Hub.
+* NGINX is also implemented at this stage to act as a reverse proxy to allow us to access the web app without requiring to specify a port. 
+* This is all deployed on Ubuntu Servers hosted on GCP. 
+<p align="center">
+  <img src="https://i.imgur.com/ICrcXaN.png">
+</p>
 <br>
 
 ## Front-End Design
-A brief walkthrough of the front-end design of the website
+The first implementation of the application simply generated a piece of equipment. 
 <p align="center">
-  <img src="https://i.imgur.com/dneOWlo.png">
+  <img src="https://i.imgur.com/CQpOk7D.png">
 </p>
-The user is welcomed to the site with the homepage
+
 <br>
+The second implementation of the application generated the piece of equipment and saved it to the database. The previous pieces of equipment 
 <p align="center">
-  <img src="https://i.imgur.com/A5OIy6M.png">
+  <img src="https://i.imgur.com/WuxZ1vt.png">
 </p>
-The user can choose to sign up to the website by creating an account. 
-<p align="center">
-  <img src="https://i.imgur.com/yB82yuL.png">
-</p>
-The user can then sign in to the website
-<p align="center">
-  <img src="https://i.imgur.com/nlGq4LL.png">
-</p>
-After signing in, the user is directed to their plant list which initially is empty. They can choose the Add New Plant button to start their diary.
-<p align="center">
-  <img src="https://i.imgur.com/MmsO6ap.png">
-</p>
-The user is then directed to the New Plant page where they can enter their plants details.
-<p align="center">
-  <img src="https://i.imgur.com/3ntikAB.png">
-</p>
-Once submitted the user is directed back to their plant list with the new entry listed. Each individual entry can be edited or deleted.
-<p align="center">
-  <img src="https://i.imgur.com/mBFU6a6.png">
-</p>
-The user also has the option to update their account details or delete their account and posts entirely.
 
 <br>
 
 ## Risk Assessment
 <p align="center">
-  <img src="https://i.imgur.com/mCvxbSo.png">
+  <img src="https://i.imgur.com/qeuAEEl.png">
 </p>
 
 <br>
 
 ## Difficulties Faced
-Page Layout and Design<br>
-The original design I had planned would present the user with a splash screen welcoming them to the website with a message in the middle of
-the page, with navigation buttons beneath this message. When it came to development I found I did not have the time to develop
-my HTML skills enough to achieve this. The ideal design also had tiled plant themed background image present on all pages. 
+NGINX Reverse Proxy<br>
+I had encountered an issue with the NGINX Reverse Proxy with a port conflict which was overhanging from previous configuration during development. This tripped me up for a while and through all my troubleshooting I ended up renaming and mispelling a part of my configuration. I had confirmed all parts of the configuration were correct and in place, but that one spelling mistake cost me a couple of hours. This has really enforced that I need to be diligent in spellchecking myself. 
 
-Database Structure<br>
-When the project was planned, one of the "shoulds" was to include the functionality of the user to have individual rooms
-which they could organise their plants into. I feel I should have approached this first to avoid having to dismantle some of
-the existing functionality to add this. 
+
+Environment Variables<br>
+Figuring out how to pass environment variables into the docker containers was just within reach for a long time but I couldn't quite figure it out. In this case I tunnel visioned on one approach and spent too long on it, where as trying something just a little different would have lead me to the correct answer. 
+
 
 <br>
 
 ## Current Issues
-* Database entries can currently be deleted by navigating directly to the delete post URL in the browser if the post IDs are known
+* List of opened loot currently goes on forever meaning the page can end up incredibly long. This should be limited by only showing the last 50 results in the DB query. 
 
 <br>
 
 ## Future Improvements
-* Implement Splash screen on homepage for a more aesthetically pleasing welcome to the site.
-* Implement user rooms for better plant organisation.
-* Add plant themed background to pages.
-* More consideration in page layout and font styling. 
-* Ability to upload images to each plant entry.
+* User sign in to track individual users luck.
+* Colour each quality of item.
+* A board showing each item slot and the best quality item found so far for each slot.
 
 <br>
 
@@ -195,6 +162,6 @@ Gary Forrow
 <br>
 
 ##### Resources:
-* Trello - https://trello.com/b/mWkaYpmy/plant-diary
-* Link to app - http://35.189.101.96/
+* Trello - https://trello.com/b/9hLtft5c/sfia2
+* Link to app - http://35.189.124.167
 <br>
