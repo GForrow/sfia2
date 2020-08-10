@@ -6,5 +6,5 @@ import requests
 def item():
     beginning = requests.get('http://Service_2:5001/randomphrase')
     ending = requests.get('http://Service_3:5002/randomphrase')
-    response = beginning.text + " " + ending.text
+    response = "You got a " + beginning.text + " " + ending.text + "!"
     return response
