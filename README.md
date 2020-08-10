@@ -99,10 +99,11 @@ To keep in line with the brief I made us of the following technologies that were
 The image above details the CI Pipeline implemented for this project.
 <br>
 
-* Source Code - Written and tested locally while being commited to preestablished GitHub Repo making use of the feature branch model. 
+* Source Code - Written and tested locally using Python while being commited to preestablished GitHub Repository making use of the feature branch model. 
 * Project Tracking - We then look to Trello to confirm our previous job from project backlog was complete, and look to take on the next.
 * Version Control System - Git is used to branch from the functioning app repository when developing each job from Trello, before being merged back into the main branch. (See screenshot below)
-* CI Server - When a new commit has been made, Jenkins will run a job to replace the old version with the new from GitHub, and rerun the Docker Compose and Ansible Playbook. This would also cause new docker images to be built and pushed to Docker Hub.
+* CI Server - When a new commit has been made, Jenkins will run a pipeline job to replace the old version of the project with the new from GitHub, and rerun the Docker Compose and Ansible Playbook. The Docker compose would causes new docker images to be built and pushed to Docker Hub, as well as the number of replicas of the container to be built, and the network to be deployed to.
+The Ansible playbook initiates scripts which installs docker on required nodes, initialises the swarm, and assigns a worker node.
 * NGINX is also implemented at this stage to act as a reverse proxy to allow us to access the web app without requiring to specify a port. 
 * This is all deployed on Ubuntu Servers hosted on GCP. 
 <p align="center">
